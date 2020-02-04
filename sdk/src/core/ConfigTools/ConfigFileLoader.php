@@ -70,11 +70,8 @@ class ConfigFileLoader
      * Load the default config file and after load the environnement config file
      */
     private function _loadConfFile() {
-
-        //TODO gestion des erreurs
         $this->_apiMode = self::$_config['mode'];
-
-        $this->_fileData = self::$_config;
+        $this->_fileData = self::$_config[$this->_apiMode] ?? [];
     }
 
     #endregion LoadConfigFile
