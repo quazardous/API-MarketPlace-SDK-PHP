@@ -71,14 +71,10 @@ class ConfigFileLoader
      */
     private function _loadConfFile() {
 
-        $reader = new \Zend\Config\Reader\Ini();
-
-        $configFile = $reader->fromFile(__DIR__ . '/../../../../config/config.ini');
-
         //TODO gestion des erreurs
-        $this->_apiMode = $configFile['api']['mode'];
+        $this->_apiMode = self::$_config['mode'];
 
-        $this->_fileData = $reader->fromFile(__DIR__ . '/../../../../config/' . $this->_apiMode . '.config.ini');
+        $this->_fileData = self::$_config;
     }
 
     #endregion LoadConfigFile
@@ -91,4 +87,9 @@ class ConfigFileLoader
 
     #endregion public methods
 
+    static protected $_config;
+    public static function injectConfig(array $config)
+    {
+        self::$_config = $config;
+    }
 }
