@@ -80,7 +80,7 @@ class GetProductListByIdentifierResponse extends iResponse
      */
     private function _getProductList()
     {
-        foreach ($this->_dataResponse['s:Body']['GetProductListByIdentifierResponse']['GetProductListByIdentifierResult']['a:ProductListByIdentifier']['a:ProductByIdentifier'] as $productXML) {                 
+        foreach ($this->_dataResponse['s:Body']['GetProductListByIdentifierResponse']['GetProductListByIdentifierResult']['a:ProductListByIdentifier'] as $productXML) {
            
             $product = new ProductIdentity($productXML['a:Ean']);                
             if($productXML['a:HasError'] == 'true')
